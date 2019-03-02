@@ -17,6 +17,10 @@ var tailLength = 3
 // tails contains old head's positions
 var tails = []
 
+// apple's position
+var appleX = 0
+var appleY = 0
+
 function setup() {
   createCanvas(400, 400)
   frameRate(10)
@@ -25,6 +29,10 @@ function setup() {
 // head starts at the center of the screen
 headX = numOfBlocks/2
 headY = numOfBlocks/2
+
+// pick random number between 0 and numOfBlocks
+appleX = round(random(0, numOfBlocks - 1 ))
+appleY = round(random(0, numOfBlocks - 1 ))
 
 function draw() {
   background(0, 0, 0)
@@ -67,6 +75,20 @@ function draw() {
          tails[i].y * blockSize,
          blockSize,
          blockSize)
+  }
+
+  // draw the applie
+  fill(255, 0, 0)
+  rect(appleX * blockSize,
+       appleY * blockSize,
+       blockSize,
+       blockSize)
+
+  // when hitting the apple
+  if(headX == appleX && headY == appleY) {
+    appleX = round(random(0, numOfBlocks - 1 ))
+    appleY = round(random(0, numOfBlocks - 1 ))
+    tailLength++
   }
 }
 

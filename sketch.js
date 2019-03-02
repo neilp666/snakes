@@ -90,6 +90,23 @@ function draw() {
     appleY = round(random(0, numOfBlocks - 1 ))
     tailLength++
   }
+  // When the snake is moving
+  if(speedX !=0 || speedY !=0) {
+    for(var i = 0; i < tails.length - 1; i++) {
+      if(headX == tails[i].x && headY == tails[i].y) {
+        headX = numOfBlocks/2
+        headY = numOfBlocks/2
+
+        speedX = 0
+        speedY = 0
+
+        tails = []
+        tailLength = 3
+        appleX = round(random(0, numOfBlocks - 1 ))
+        appleY = round(random(0, numOfBlocks - 1 ))
+      }
+    }
+  }
 }
 
 function keyPressed() {
